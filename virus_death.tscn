@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqqkp0ihddjsb"]
+
+[ext_resource type="Script" path="res://material/virus_death.gd" id="1_dgjvd"]
+[ext_resource type="Material" uid="uid://phcm7hpbpfwj" path="res://material/virus_material.tres" id="2_g80e1"]
+[ext_resource type="AudioStream" uid="uid://dkywhm6ohoect" path="res://sfx/542560__matthewholdensound__owi_crystalshatter-2.wav" id="3_qkmit"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_4rkyh"]
+material = ExtResource("2_g80e1")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="VirusDeath" type="Node3D"]
+script = ExtResource("1_dgjvd")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+emitting = false
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("PrismMesh_4rkyh")
+particle_flag_rotate_y = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+angle_min = -10.0
+angle_max = 10.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_qkmit")
+autoplay = true
+
+[connection signal="finished" from="CPUParticles3D" to="." method="_on_cpu_particles_3d_finished"]

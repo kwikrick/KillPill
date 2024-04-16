@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtkp3tux23jrl"]
+
+[ext_resource type="Script" path="res://Virus.gd" id="1_yaahw"]
+[ext_resource type="Material" uid="uid://phcm7hpbpfwj" path="res://material/virus_material.tres" id="2_2qhl0"]
+[ext_resource type="AudioStream" uid="uid://cr82mrk8pjtfr" path="res://sfx/660457__adhdreaming__flopper.wav" id="3_ycc1l"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oa240"]
+radius = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_exog0"]
+radius = 2.0
+
+[node name="Virus" type="RigidBody3D" groups=["virii"]]
+script = ExtResource("1_yaahw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(2, 2, 2)
+material = ExtResource("2_2qhl0")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(0.853553, -0.146447, 0.5, 0.5, 0.5, -0.707107, -0.146447, 0.853553, 0.5, 0, 0, 0)
+size = Vector3(2, 2, 2)
+material = ExtResource("2_2qhl0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_oa240")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_exog0")
+
+[node name="DuplicateTimer" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="DuplicateAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_ycc1l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="DuplicateTimer" to="." method="_on_duplicate_timer_timeout"]

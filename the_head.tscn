@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bngt6ggd13h50"]
+
+[ext_resource type="ArrayMesh" uid="uid://blnmhq4axap5f" path="res://head.obj" id="1_mwgs1"]
+[ext_resource type="Material" uid="uid://b2o1ksxxh0o38" path="res://material/eye.tres" id="2_p36by"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvi3x"]
+albedo_color = Color(1, 0.784314, 0.647059, 1)
+roughness = 0.65
+
+[node name="TheHead" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+mesh = ExtResource("1_mwgs1")
+surface_material_override/0 = ExtResource("2_p36by")
+surface_material_override/1 = ExtResource("2_p36by")
+surface_material_override/2 = SubResource("StandardMaterial3D_lvi3x")

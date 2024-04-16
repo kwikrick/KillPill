@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://do3pniaeguu0d"]
+
+[ext_resource type="PackedScene" uid="uid://bngt6ggd13h50" path="res://the_head.tscn" id="1_kxmw0"]
+[ext_resource type="Texture2D" uid="uid://bliq50kxpmnrq" path="res://killpill.png" id="2_rjs53"]
+
+[sub_resource type="Environment" id="Environment_rdspa"]
+background_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrca6"]
+roughness = 0.39
+
+[node name="Titlescreen" type="Node3D"]
+
+[node name="TheHead" parent="." instance=ExtResource("1_kxmw0")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 184.987)
+environment = SubResource("Environment_rdspa")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 0, -20.7489, 139.29)
+texture = ExtResource("2_rjs53")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.7918, 0.368912, 0.486782, -0.581848, 0.213204, 0.784855, 0.185759, -0.904681, 0.383466, 55.2607, 147.839, 99.6623)
+light_energy = 20.0
+spot_range = 200.0
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(0.954202, 0, -0.855147, 0, 1, 0, 1.57409, 0, 0.518385, 0, 5.15379, 123.603)
+radius = 2.0
+material = SubResource("StandardMaterial3D_xrca6")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.979837, 0.112205, -0.165318, -0.0314742, 0.903769, 0.426862, 0.197305, -0.413052, 0.889078, -4.57757, 7.32291, 137.924)
+spot_range = 24.38

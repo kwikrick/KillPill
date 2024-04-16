@@ -1,0 +1,238 @@
+[gd_scene load_steps=13 format=3 uid="uid://buxqe1mn2rkm5"]
+
+[ext_resource type="PackedScene" uid="uid://b6hgduw2f85h6" path="res://player.tscn" id="1_iy8yd"]
+[ext_resource type="PackedScene" uid="uid://dtkp3tux23jrl" path="res://virus.tscn" id="2_2848m"]
+[ext_resource type="Material" uid="uid://cxilxcnksd0ei" path="res://material/pink_stuff.tres" id="2_c7iy2"]
+[ext_resource type="PackedScene" uid="uid://bngt6ggd13h50" path="res://the_head.tscn" id="4_sbcue"]
+[ext_resource type="AudioStream" uid="uid://dic4unq564j7o" path="res://sfx/197751__wjoojoo__underwater_ambience_lake_lbj_08232013_1.wav" id="5_nd746"]
+[ext_resource type="AudioStream" uid="uid://utg206x825ev" path="res://sfx/137718__robinhood76__03306-space-flare-launch.wav" id="5_ojidu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jyh67"]
+friction = 0.0
+bounce = 0.23
+
+[sub_resource type="Animation" id="Animation_sqku0"]
+resource_name = "FlyInto"
+length = 5.0
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = PackedFloat32Array(0, 1, -350, 0, 0, 5, 1, -101.49, 0, 0)
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../LaunchAudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_ojidu")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../BackgroundAudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-24.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_i85yn"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -350, 0, 0)
+
+[sub_resource type="Animation" id="Animation_bs1td"]
+resource_name = "Test"
+length = 0.01
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -75.9116, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fatvp"]
+_data = {
+"FlyInto": SubResource("Animation_sqku0"),
+"RESET": SubResource("Animation_i85yn"),
+"Test": SubResource("Animation_bs1td")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cy2p"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="World" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_iy8yd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25.7398, 28.6512, -63.3115)
+physics_material_override = SubResource("PhysicsMaterial_jyh67")
+
+[node name="TheGuts" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("2_c7iy2")
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="TheGuts"]
+transform = Transform3D(-4.37114e-08, -3.59286, 0, 1, -1.57049e-07, 0, 0, 0, 1, 0, 0, 0)
+flip_faces = true
+radius = 5.0
+height = 25.0
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="TheGuts"]
+transform = Transform3D(0.816848, -1.97726, -0.172899, 0.392369, 2.69385, -0.532801, 0.422853, 1.31994, 0.828389, -73.7004, 72.6903, -24.7355)
+flip_faces = true
+radius = 7.0
+height = 25.0
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="TheGuts"]
+transform = Transform3D(2.08077e-08, 1.71029, 0.879432, 1, -1.57049e-07, 4.94149e-23, 3.84412e-08, 3.15968, -0.476023, 6.72905, 51.1454, 0)
+flip_faces = true
+radius = 7.0
+height = 25.0
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="TheGuts"]
+transform = Transform3D(0.983006, 0.659555, -3.93884e-10, -0.182975, 3.52027, -0.0807382, -0.0148214, 0.285152, 0.996735, 14.2566, 51.4205, 16.5108)
+flip_faces = true
+radius = 5.0
+height = 25.0
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.9872, 54.4503, 0, 0)
+flip_faces = true
+radius = 15.0
+
+[node name="CSGSphere3D12" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(0.878751, 0, 0.948453, 0, 1, 0, -0.477281, 0, 1.74625, 38.2178, 47.5676, 58.173)
+flip_faces = true
+radius = 15.0
+
+[node name="CSGSphere3D8" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2442, 101.423, 0)
+flip_faces = true
+radius = 15.0
+
+[node name="CSGSphere3D9" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0598, 101.423, 17.7308)
+flip_faces = true
+radius = 15.0
+
+[node name="CSGSphere3D10" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0598, 110.124, 2.73226)
+flip_faces = true
+radius = 15.0
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.7599, 0, 0)
+flip_faces = true
+radius = 15.0
+
+[node name="CSGSphere3D11" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.474, 52.6706, 16.3459)
+flip_faces = true
+radius = 15.0
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.52, 0, 0)
+flip_faces = true
+radius = 47.0463
+
+[node name="CSGSphere3D13" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.6466, 25.8617, -57.1261)
+flip_faces = true
+radius = 47.0463
+
+[node name="CSGSphere3D14" type="CSGSphere3D" parent="TheGuts/CSGSphere3D13"]
+transform = Transform3D(0.875844, 0, 0.959011, 0, 1, 0, -0.482595, 0, 1.74047, -14.9016, -41.0286, -17.6188)
+operation = 2
+flip_faces = true
+radius = 26.7222
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.84487, 0, 16.3599)
+flip_faces = true
+radius = 22.4426
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.863, 38.892, 0)
+flip_faces = true
+radius = 22.4426
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.863, 69.2788, 0)
+flip_faces = true
+radius = 22.4426
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.863, 99.1589, 0)
+flip_faces = true
+radius = 22.4426
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="TheGuts"]
+transform = Transform3D(1, 0, 0, 0, 1.08176, -0.5, 0, 0.624554, 0.866025, 56.7774, 18.6111, -56.8345)
+flip_faces = true
+inner_radius = 30.0
+outer_radius = 42.0
+sides = 16
+ring_sides = 12
+
+[node name="Virus" parent="." instance=ExtResource("2_2848m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8586, 102.905, 0)
+
+[node name="Virus2" parent="." instance=ExtResource("2_2848m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08383, -9.6904, 13.4361)
+
+[node name="Virus3" parent="." instance=ExtResource("2_2848m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.0709, 51.5649, 64.1845)
+
+[node name="Virus4" parent="." instance=ExtResource("2_2848m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.052, 5.1903, -1.01778)
+
+[node name="Virus5" parent="." instance=ExtResource("2_2848m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0025, 29.5245, -76.8884)
+
+[node name="TheHead" parent="." instance=ExtResource("4_sbcue")]
+transform = Transform3D(-4.02577e-08, 0.38959, -0.920988, 1.70295e-08, 0.920988, 0.38959, 1, 0, -4.37114e-08, -202.038, -22.1942, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.392035, 0.677069, -0.622806, -0.360684, 0.73592, 0.573, 0.846295, 0, 0.532714, -324.329, 139, 34.6331)
+light_energy = 100.0
+spot_range = 300.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+root_node = NodePath("../Player")
+libraries = {
+"": SubResource("AnimationLibrary_fatvp")
+}
+
+[node name="BackgroundAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nd746")
+volume_db = -24.0
+autoplay = true
+max_polyphony = 4
+
+[node name="LaunchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ojidu")
+
+[node name="WallCSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150, 0, 0)
+size = Vector3(1, 500, 500)
+material = SubResource("StandardMaterial3D_2cy2p")
