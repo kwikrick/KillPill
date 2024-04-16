@@ -1,6 +1,8 @@
 extends RigidBody3D
 class_name Player
 
+var main: Main = null
+
 # enabled/disabled by main game flow
 var input_enabled=true
 
@@ -20,16 +22,18 @@ var bullit_speed=200
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mouse_look_global_dir = -1 * $Camera3D.global_basis.z
+	# always need a main, except when testing
+	main = get_tree().root.find_child("Main",true,false)
 	# for testing, enable mouse capture from start
-	var main = get_tree().root.find_child("Main",true,false)
 	if not main:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# init mouse look direction
+	mouse_look_global_dir = -1 * $Camera3D.global_basis.z
+	
 
 func _input(event):
 	
 	# for testing, esc disbales mouse capture 
-	var main = get_tree().root.find_child("Main",true,false)
 	if not main and event.is_action_pressed("ui_cancel"):
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED: 
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -38,8 +42,9 @@ func _input(event):
 
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion: 
 		# modify accumulated mouse rotation
-		var delta_x = -event.relative.x * mouse_look_speed
-		var delta_y = event.relative.y * mouse_look_speed
+		var sign = 1 if main and main.invert_y else -1 
+		var delta_x = -1 * event.relative.x * mouse_look_speed
+		var delta_y = sign * event.relative.y * mouse_look_speed
 		mouse_look_global_dir = mouse_look_global_dir.rotated(global_basis.y ,delta_x).rotated(global_basis.x, delta_y)
 
 func _process(_delta):
