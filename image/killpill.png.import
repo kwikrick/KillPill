@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gf81yywrww8l"
-path.s3tc="res://.godot/imported/plasma.png-e9e8f97a6b6c8a80acd8f5700f0f866f.s3tc.ctex"
+uid="uid://bliq50kxpmnrq"
+path.s3tc="res://.godot/imported/killpill.png-91bd6d04bb3388e400c74839bae22fe7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://plasma.png"
-dest_files=["res://.godot/imported/plasma.png-e9e8f97a6b6c8a80acd8f5700f0f866f.s3tc.ctex"]
+source_file="res://image/killpill.png"
+dest_files=["res://.godot/imported/killpill.png-91bd6d04bb3388e400c74839bae22fe7.s3tc.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ggobqkpia3xt"
-path.s3tc="res://.godot/imported/scanner.png-ec330367b690976853e4d1452a0d18bf.s3tc.ctex"
+path.s3tc="res://.godot/imported/scanner.png-f1d0a4bf81f4b8762b477d41904e9716.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scanner.png"
-dest_files=["res://.godot/imported/scanner.png-ec330367b690976853e4d1452a0d18bf.s3tc.ctex"]
+source_file="res://image/scanner.png"
+dest_files=["res://.godot/imported/scanner.png-f1d0a4bf81f4b8762b477d41904e9716.s3tc.ctex"]
 
 [params]
 

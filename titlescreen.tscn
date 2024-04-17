@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://do3pniaeguu0d"]
 
-[ext_resource type="PackedScene" uid="uid://bngt6ggd13h50" path="res://the_head.tscn" id="1_kxmw0"]
-[ext_resource type="Texture2D" uid="uid://bliq50kxpmnrq" path="res://killpill.png" id="2_rjs53"]
+[ext_resource type="PackedScene" uid="uid://bngt6ggd13h50" path="res://the_head.tscn" id="1_v2g2d"]
+[ext_resource type="Texture2D" uid="uid://bliq50kxpmnrq" path="res://image/killpill.png" id="2_tkt1s"]
 
 [sub_resource type="Environment" id="Environment_rdspa"]
 background_mode = 1
@@ -11,7 +11,7 @@ roughness = 0.39
 
 [node name="Titlescreen" type="Node3D"]
 
-[node name="TheHead" parent="." instance=ExtResource("1_kxmw0")]
+[node name="TheHead" parent="." instance=ExtResource("1_v2g2d")]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -20,7 +20,7 @@ environment = SubResource("Environment_rdspa")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(18, 0, 0, 0, 18, 0, 0, 0, 18, 0, -20.7489, 139.29)
-texture = ExtResource("2_rjs53")
+texture = ExtResource("2_tkt1s")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.7918, 0.368912, 0.486782, -0.581848, 0.213204, 0.784855, 0.185759, -0.904681, 0.383466, 55.2607, 147.839, 99.6623)

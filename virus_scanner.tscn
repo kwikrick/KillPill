@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0fx3wm44nl5x"]
 
 [ext_resource type="Script" path="res://virus_scanner.gd" id="1_prx5h"]
-[ext_resource type="Texture2D" uid="uid://ggobqkpia3xt" path="res://scanner.png" id="1_r3jjj"]
+[ext_resource type="Texture2D" uid="uid://ggobqkpia3xt" path="res://image/scanner.png" id="2_63s48"]
 
 [node name="VirusScanner" type="Node3D"]
 script = ExtResource("1_prx5h")
 
 [node name="Background" type="Sprite3D" parent="."]
-texture = ExtResource("1_r3jjj")
+texture = ExtResource("2_63s48")
 
 [node name="ImageDisplay" type="Sprite3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
