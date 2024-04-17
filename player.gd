@@ -20,6 +20,7 @@ var bullet_scn=preload("res://bullet.tscn")
 var ready_to_fire=true
 var bullit_speed=200
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# always need a main, except when testing
@@ -29,7 +30,7 @@ func _ready():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	# init mouse look direction
 	mouse_look_global_dir = -1 * $Camera3D.global_basis.z
-	
+
 
 func _input(event):
 	
@@ -51,6 +52,7 @@ func _process(_delta):
 	if input_enabled:
 		if Input.is_action_pressed("fire"):
 			fire()
+
 		
 func _physics_process(delta):
 	
@@ -113,7 +115,3 @@ func fire():
 func _on_fire_reload_timer_timeout():
 	ready_to_fire=true
 	
-
-
-func _on_pain_timer_timeout():
-	pass # Replace with function body.

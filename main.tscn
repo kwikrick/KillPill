@@ -106,43 +106,6 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 100
 text = "Virus Killed Patient!"
 
-[node name="Panel" type="Panel" parent="Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -71.0
-offset_right = 72.0
-offset_bottom = 83.0
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="Control/Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -45.0
-offset_right = 45.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "Virus Count"
-
-[node name="LabelViriiCount" type="Label" parent="Control/Panel"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -23.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "0"
-horizontal_alignment = 1
-
 [node name="TitleTextureRect" type="TextureRect" parent="Control"]
 layout_mode = 1
 anchors_preset = 8

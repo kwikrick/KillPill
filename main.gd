@@ -29,7 +29,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var count = get_tree().get_nodes_in_group("virii").size()
-	$Control/Panel/LabelViriiCount.text = "{0}".format([count])
 	if game_active:
 		if count == 0:
 			win()

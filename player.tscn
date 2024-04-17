@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6hgduw2f85h6"]
+[gd_scene load_steps=8 format=3 uid="uid://b6hgduw2f85h6"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_nbm33"]
 [ext_resource type="PackedScene" uid="uid://msishhpanol5" path="res://chair.obj" id="2_m78al"]
 [ext_resource type="PackedScene" uid="uid://cobohilsrrgsv" path="res://bullet.tscn" id="3_cwt0n"]
 [ext_resource type="AudioStream" uid="uid://brv0bvdgv7fvm" path="res://sfx/440661__seansecret__classic-laser-pew.wav" id="4_urtmt"]
+[ext_resource type="PackedScene" uid="uid://c0fx3wm44nl5x" path="res://virus_scanner.tscn" id="5_8gjh5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nvd3i"]
 radius = 3.0
@@ -55,5 +56,8 @@ wait_time = 0.1
 [node name="FireAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_urtmt")
 volume_db = -12.0
+
+[node name="VirusScanner" parent="." instance=ExtResource("5_8gjh5")]
+transform = Transform3D(0.2, 0, 0, 0, 0.193176, 0.0517975, 0, -0.0517975, 0.193176, 0.0203934, -0.107123, -0.711569)
 
 [connection signal="timeout" from="FireReloadTimer" to="." method="_on_fire_reload_timer_timeout"]
