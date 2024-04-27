@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://buxqe1mn2rkm5"]
+[gd_scene load_steps=14 format=3 uid="uid://buxqe1mn2rkm5"]
 
 [ext_resource type="PackedScene" uid="uid://b6hgduw2f85h6" path="res://player.tscn" id="1_iy8yd"]
 [ext_resource type="PackedScene" uid="uid://dtkp3tux23jrl" path="res://virus.tscn" id="2_2848m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bngt6ggd13h50" path="res://the_head.tscn" id="4_sbcue"]
 [ext_resource type="AudioStream" uid="uid://dic4unq564j7o" path="res://sfx/197751__wjoojoo__underwater_ambience_lake_lbj_08232013_1.wav" id="5_nd746"]
 [ext_resource type="AudioStream" uid="uid://utg206x825ev" path="res://sfx/137718__robinhood76__03306-space-flare-launch.wav" id="5_ojidu"]
+[ext_resource type="AudioStream" uid="uid://dpkdlhe32k4bv" path="res://sfx/LaunchButton.wav" id="6_oudhs"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jyh67"]
 friction = 0.0
@@ -33,7 +34,7 @@ tracks/1/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("5_ojidu")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0.4)
 }
 tracks/1/use_blend = true
 tracks/2/type = "value"
@@ -47,6 +48,33 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-24.0, 0.0]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../LaunchAudioStreamPlayer2")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_oudhs")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../LaunchAudioStreamPlayer:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4, 4.2, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -24.0]
 }
 
 [sub_resource type="Animation" id="Animation_i85yn"]
@@ -83,7 +111,7 @@ albedo_color = Color(0, 0, 0, 1)
 [node name="World" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_iy8yd")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25.7398, 28.6512, -63.3115)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -208.382, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_jyh67")
 
 [node name="TheGuts" type="CSGCombiner3D" parent="."]
@@ -225,12 +253,14 @@ libraries = {
 
 [node name="BackgroundAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_nd746")
-volume_db = -24.0
+volume_db = -10.8788
 autoplay = true
 max_polyphony = 4
 
 [node name="LaunchAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_ojidu")
+
+[node name="LaunchAudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+volume_db = 3.0
 
 [node name="WallCSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -150, 0, 0)

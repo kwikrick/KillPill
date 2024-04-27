@@ -57,6 +57,7 @@ func _on_button_start_pressed():
 	# TODO: move ship on rail
 	anim.connect("animation_finished",_on_animation_finished)
 	anim.play("FlyInto")
+	$AudioStreamPlayerIntro.stop()
 	
 func _on_animation_finished(_anim_name):
 	player.input_enabled=true
